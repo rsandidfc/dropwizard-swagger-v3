@@ -26,7 +26,7 @@
 
     <groupId>com.fashiontrade</groupId>
     <artifactId>dropwizard-swagger-v3</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>Dropwizard Swagger 2.x support</name>
     <description>A simple way to document your REST APIs in Dropwizard using Swagger 2.x (OpenApi 3.0 specification)</description>

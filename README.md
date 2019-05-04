@@ -20,9 +20,9 @@ http://www.apache.org/licenses/LICENSE-2.0
 Version matrix
 --------------
 
-dropwizard-swagger| Dropwizard |Swagger API|Swagger UI
-------------------|------------|-----------|----------
-       1.3.x      |   1.3.x    |   2.0.7   | v3.19.2
+ version | Dropwizard |Swagger API|Swagger UI
+---------|------------|-----------|----------
+  1.0.0  |   1.3.x    |   2.0.7   | v3.19.2
 
 How to use it
 -------------
@@ -33,7 +33,7 @@ How to use it
 <dependency>
     <groupId>com.fashiontrade</groupId>
     <artifactId>dropwizard-swagger-v3</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
