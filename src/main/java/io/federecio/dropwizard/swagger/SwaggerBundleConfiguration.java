@@ -78,12 +78,10 @@ public class SwaggerBundleConfiguration {
   private SwaggerOAuth2Configuration swaggerOAuth2Configuration = new SwaggerOAuth2Configuration();
   private boolean prettyPrint = true;
 
-  @Nullable private String host;
-
   private String contextRoot = "/";
-  private String[] schemes = new String[] {"http"};
   private boolean enabled = true;
   private boolean includeSwaggerResource = true;
+  private boolean readAllResources = true;
 
   /**
    * For most of the scenarios this property is not needed.
@@ -247,17 +245,6 @@ public class SwaggerBundleConfiguration {
     this.prettyPrint = isPrettyPrint;
   }
 
-  @Nullable
-  @JsonProperty
-  public String getHost() {
-    return host;
-  }
-
-  @JsonProperty
-  public void setHost(@Nullable String host) {
-    this.host = host;
-  }
-
   @JsonProperty
   public String getContextRoot() {
     return contextRoot;
@@ -266,16 +253,6 @@ public class SwaggerBundleConfiguration {
   @JsonProperty
   public void setContextRoot(String contextRoot) {
     this.contextRoot = contextRoot;
-  }
-
-  @JsonProperty
-  public String[] getSchemes() {
-    return Arrays.copyOf(schemes, schemes.length);
-  }
-
-  @JsonProperty
-  public void setSchemes(String[] schemes) {
-    this.schemes = Arrays.copyOf(schemes, schemes.length);
   }
 
   @JsonProperty
@@ -298,8 +275,18 @@ public class SwaggerBundleConfiguration {
     this.includeSwaggerResource = include;
   }
 
+  @JsonProperty
+  public boolean isReadAllResources() {
+    return readAllResources;
+  }
+
+  @JsonProperty
+  public void setReadAllResources(final boolean include) {
+    this.readAllResources = include;
+  }
+
   @JsonIgnore
-  public SwaggerConfiguration build(String urlPattern) {
+  public SwaggerConfiguration build() {
     if (Strings.isNullOrEmpty(resourcePackage)) {
       throw new IllegalStateException(
           "Resource package needs to be specified"
@@ -307,7 +294,7 @@ public class SwaggerBundleConfiguration {
     }
 
     OpenAPI oas = new OpenAPI();
-    Info info =
+    final Info info =
         new Info()
             .title(title)
             .version(version)
@@ -315,11 +302,13 @@ public class SwaggerBundleConfiguration {
             .contact(new Contact().email(contactEmail).name(contact).url(contactUrl))
             .license(new License().name(license).url(licenseUrl))
             .termsOfService(termsOfServiceUrl);
-    oas.info(info);
 
+    final String[] exclusions = { SwaggerResource.PATH };
     return new SwaggerConfiguration()
-        .openAPI(oas)
+        .openAPI(oas.info(info))
         .prettyPrint(prettyPrint)
+        .readAllResources(readAllResources)
+        .ignoredRoutes(Arrays.stream(exclusions).collect(Collectors.toSet()))
         .resourcePackages(Arrays.stream(resourcePackage.split(",")).collect(Collectors.toSet()));
   }
 }

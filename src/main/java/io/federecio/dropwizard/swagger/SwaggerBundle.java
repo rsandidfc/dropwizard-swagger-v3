@@ -36,7 +36,9 @@ import io.dropwizard.views.ViewBundle;
 import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.jaxrs2.SwaggerSerializers;
+import io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
+import io.swagger.v3.oas.integration.SwaggerConfiguration;
 
 /**
  * A {@link io.dropwizard.ConfiguredBundle} that provides hassle-free configuration of Swagger and
@@ -76,7 +78,8 @@ public abstract class SwaggerBundle<T extends Configuration> implements Configur
             "swagger-oauth2-connect")
         .run(environment);
 
-    swaggerBundleConfiguration.build(configurationHelper.getUrlPattern());
+    final SwaggerConfiguration oasConfiguration = swaggerBundleConfiguration.build();
+    new JaxrsOpenApiContextBuilder().openApiConfiguration(oasConfiguration).buildContext(true);
 
     environment.jersey().register(new OpenApiResource());
     environment.jersey().register(new BackwardsCompatibleSwaggerResource());

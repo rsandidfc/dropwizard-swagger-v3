@@ -32,9 +32,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/{parameter: openapi|swagger}")
+import static io.federecio.dropwizard.swagger.SwaggerResource.PATH;
+
+@Path(PATH)
 @Produces(MediaType.TEXT_HTML)
 public class SwaggerResource {
+  static final String PATH = "/swagger";
   private final SwaggerViewConfiguration viewConfiguration;
   private final SwaggerOAuth2Configuration oAuth2Configuration;
   private final String contextRoot;

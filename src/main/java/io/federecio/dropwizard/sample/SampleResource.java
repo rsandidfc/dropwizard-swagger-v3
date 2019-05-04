@@ -17,11 +17,9 @@ package io.federecio.dropwizard.sample;
 
 import io.dropwizard.auth.Auth;
 import io.dropwizard.auth.PrincipalImpl;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -37,11 +35,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/")
-@OpenAPIDefinition(
-    info = @Info(title = "HelloApi", description = "Sample API to say hello."),
-    tags = {
-        @Tag(name = "HelloTag")
-    })
+@Tag(name = "HelloTag")
 @SecuritySchemes({
   @SecurityScheme(type = SecuritySchemeType.HTTP, scheme = "basic"),
   @SecurityScheme(
@@ -77,6 +71,7 @@ public class SampleResource {
   @Operation(
       summary = "Secret",
       description = "Returns secret",
+      tags = { "HelloTag" },
       responses = {
         @ApiResponse(
             responseCode = "200",
