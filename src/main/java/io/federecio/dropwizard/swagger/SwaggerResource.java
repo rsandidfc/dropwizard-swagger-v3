@@ -27,12 +27,12 @@
  */
 package io.federecio.dropwizard.swagger;
 
+import static io.federecio.dropwizard.swagger.SwaggerResource.PATH;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import static io.federecio.dropwizard.swagger.SwaggerResource.PATH;
 
 @Path(PATH)
 @Produces(MediaType.TEXT_HTML)

@@ -303,7 +303,7 @@ public class SwaggerBundleConfiguration {
             .license(new License().name(license).url(licenseUrl))
             .termsOfService(termsOfServiceUrl);
 
-    final String[] exclusions = { SwaggerResource.PATH };
+    final String[] exclusions = {SwaggerResource.PATH};
     return new SwaggerConfiguration()
         .openAPI(oas.info(info))
         .prettyPrint(prettyPrint)

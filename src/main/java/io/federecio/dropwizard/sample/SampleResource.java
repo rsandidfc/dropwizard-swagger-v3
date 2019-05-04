@@ -50,7 +50,7 @@ public class SampleResource {
   @Operation(
       summary = "Hello",
       description = "Returns hello",
-      tags = { "HelloTag" },
+      tags = {"HelloTag"},
       responses = {
         @ApiResponse(
             responseCode = "200",
@@ -71,7 +71,7 @@ public class SampleResource {
   @Operation(
       summary = "Secret",
       description = "Returns secret",
-      tags = { "HelloTag" },
+      tags = {"HelloTag"},
       responses = {
         @ApiResponse(
             responseCode = "200",
