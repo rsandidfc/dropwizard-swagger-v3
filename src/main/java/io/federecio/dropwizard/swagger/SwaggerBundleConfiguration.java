@@ -31,15 +31,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
-import io.swagger.jaxrs.config.BeanConfig;
-import io.swagger.models.Contact;
+import io.swagger.v3.oas.integration.SwaggerConfiguration;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * For the meaning of all these properties please refer to Swagger documentation or {@link
- * io.swagger.jaxrs.config.BeanConfig}
+ * io.swagger.v3.oas.integration.SwaggerConfiguration}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SwaggerBundleConfiguration {
@@ -48,7 +52,7 @@ public class SwaggerBundleConfiguration {
    * This is the only property that is required for Swagger to work correctly.
    *
    * <p>It is a comma separated list of the all the packages that contain the {@link
-   * io.swagger.annotations.Api} annotated resources
+   * io.swagger.v3.oas.annotations.OpenAPIDefinition} annotated resources
    */
   @NotEmpty private String resourcePackage = "";
 
@@ -295,43 +299,27 @@ public class SwaggerBundleConfiguration {
   }
 
   @JsonIgnore
-  public BeanConfig build(String urlPattern) {
+  public SwaggerConfiguration build(String urlPattern) {
     if (Strings.isNullOrEmpty(resourcePackage)) {
       throw new IllegalStateException(
           "Resource package needs to be specified"
               + " for Swagger to correctly detect annotated resources");
     }
 
-    final BeanConfig config = new BeanConfig();
-    config.setTitle(title);
-    config.setVersion(version);
-    config.setDescription(description);
-    config.setContact(contact);
-    config.setLicense(license);
-    config.setLicenseUrl(licenseUrl);
-    config.setTermsOfServiceUrl(termsOfServiceUrl);
-    config.setPrettyPrint(prettyPrint);
-    config.setBasePath(("/".equals(contextRoot) ? "" : contextRoot) + urlPattern);
-    config.setResourcePackage(resourcePackage);
-    config.setSchemes(schemes);
-    config.setHost(host);
-    config.setScan(true);
+    OpenAPI oas = new OpenAPI();
+    Info info =
+        new Info()
+            .title(title)
+            .version(version)
+            .description(description)
+            .contact(new Contact().email(contactEmail).name(contact).url(contactUrl))
+            .license(new License().name(license).url(licenseUrl))
+            .termsOfService(termsOfServiceUrl);
+    oas.info(info);
 
-    // Assign contact email/url after scan, since BeanConfig.scan will
-    // create a new info.Contact instance, thus overriding any info.Contact
-    // settings prior to scan.
-    if (contactEmail != null || contactUrl != null) {
-      if (config.getInfo().getContact() == null) {
-        config.getInfo().setContact(new Contact());
-      }
-      if (contactEmail != null) {
-        config.getInfo().getContact().setEmail(contactEmail);
-      }
-      if (contactUrl != null) {
-        config.getInfo().getContact().setUrl(contactUrl);
-      }
-    }
-
-    return config;
+    return new SwaggerConfiguration()
+        .openAPI(oas)
+        .prettyPrint(prettyPrint)
+        .resourcePackages(Arrays.stream(resourcePackage.split(",")).collect(Collectors.toSet()));
   }
 }
