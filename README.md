@@ -50,7 +50,7 @@ prop2: value2
 
 # the only required property is resourcePackage, for more config options see below
 swagger:
-  resourcePackage: <a comma separated string of the packages that contain your @Api annotated resources>
+  resourcePackage: <a comma separated string of the packages that contain your @OpenAPIDefinition annotated resources>
 ```
 
 * In your Application class:
