@@ -30,13 +30,10 @@ package io.federecio.dropwizard.swagger;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import io.restassured.RestAssured;
-import io.swagger.jaxrs.listing.BaseApiListingResource;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public abstract class DropwizardCommonTest {
@@ -52,12 +49,6 @@ public abstract class DropwizardCommonTest {
   @Before
   public void setPort() {
     RestAssured.port = port;
-  }
-
-  @BeforeClass
-  public static void crap() throws Exception {
-    Field initialized = BaseApiListingResource.class.getDeclaredField("initialized");
-    initialized.setAccessible(true);
   }
 
   @Test

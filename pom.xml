@@ -24,13 +24,13 @@
         <version>1.3.9-3</version>
     </parent>
 
-    <groupId>com.smoketurner</groupId>
-    <artifactId>dropwizard-swagger</artifactId>
-    <version>1.3.9-2-SNAPSHOT</version>
+    <groupId>com.fashiontrade</groupId>
+    <artifactId>dropwizard-swagger-v3</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
-    <name>Dropwizard Swagger support</name>
-    <description>A simple way to document your REST APIs in DropWizard using Swagger</description>
-    <url>https://github.com/smoketurner/dropwizard-swagger/</url>
+    <name>Dropwizard Swagger 2.x support</name>
+    <description>A simple way to document your REST APIs in Dropwizard using Swagger 2.x (OpenApi 3.0 specification)</description>
+    <url>https://github.com/FashionTrade/dropwizard-swagger-v3/</url>
 
     <developers>
         <developer>
@@ -43,13 +43,19 @@
             <email>jplock@smoketurner.com</email>
             <timezone>America/New_York</timezone>
         </developer>
+        <developer>
+            <id>oss92</id>
+            <name>Mohamed Osama</name>
+            <email>mohamed.osama@fashiontrade.com</email>
+            <timezone>Europe/Amsterdam</timezone>
+        </developer>
     </developers>
 
     <inceptionYear>2014</inceptionYear>
     <scm>
-        <connection>scm:git:git://github.com:smoketurner/dropwizard-swagger.git</connection>
-        <developerConnection>scm:git:git@github.com:smoketurner/dropwizard-swagger.git</developerConnection>
-        <url>http://github.com/smoketurner/dropwizard-swagger</url>
+        <connection>scm:git:git://github.com:FashionTrade/dropwizard-swagger-v3.git</connection>
+        <developerConnection>scm:git:git@github.com:FashionTrade/dropwizard-swagger-v3.git</developerConnection>
+        <url>http://github.com/FashionTrade/dropwizard-swagger-v3</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -79,9 +85,19 @@
             <artifactId>jersey-media-multipart</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-jersey2-jaxrs</artifactId>
-            <version>1.5.22</version>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-integration</artifactId>
+            <version>2.0.7</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>

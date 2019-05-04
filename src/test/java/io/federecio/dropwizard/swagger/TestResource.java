@@ -27,8 +27,9 @@
  */
 package io.federecio.dropwizard.swagger;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.servers.Server;
 import java.util.Optional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -37,12 +38,12 @@ import javax.ws.rs.core.Response;
 
 /** @author Federico Recio */
 @Path("/test.json")
-@Api("/test")
+@OpenAPIDefinition(servers = {@Server(url = "/test")})
 public class TestResource {
   public static final String OPERATION_DESCRIPTION = "This is a dummy endpoint for test";
 
   @GET
-  @ApiOperation(OPERATION_DESCRIPTION)
+  @Operation(description = OPERATION_DESCRIPTION)
   public Response dummyEndpoint(@QueryParam("dummy") final Optional<String> dummy) {
     return Response.ok().build();
   }
