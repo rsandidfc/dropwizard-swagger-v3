@@ -7,5 +7,5 @@ server:
     - type: http
       port: 0
 swagger:
-  resourcePackage: io.federecio.dropwizard.swagger
+  resourcePackage: com.ossterdam.dropwizard.swagger
   enabled: false

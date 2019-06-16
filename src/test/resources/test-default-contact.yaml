@@ -7,7 +7,7 @@ server:
     - type: http
       port: 0
 swagger:
-  resourcePackage: io.federecio.dropwizard.swagger
+  resourcePackage: com.ossterdam.dropwizard.swagger
   contact: test-contact-info
   contactEmail: test-contact-email@test.com
   contactUrl: test-url.contact.com

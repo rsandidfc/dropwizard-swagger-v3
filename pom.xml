@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2019 Federico Recio (N/A)
+    Copyright © 2019 Ossterdam (mohamed.o.alnagdy@gmail.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fashiontrade</groupId>
+    <groupId>com.ossterdam</groupId>
     <artifactId>dropwizard-swagger-v3</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <name>Dropwizard Swagger 2.x support</name>
     <description>A simple way to document your REST APIs in Dropwizard using Swagger 2.x (OpenApi 3.0 specification)</description>
-    <url>https://github.com/FashionTrade/dropwizard-swagger-v3/</url>
+    <url>https://github.com/oss92/dropwizard-swagger-v3/</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -54,27 +54,17 @@
 
     <developers>
         <developer>
-            <name>Federico Recio</name>
-            <url>http://about.me/federecio</url>
-        </developer>
-        <developer>
-            <id>jplock</id>
-            <name>Justin Plock</name>
-            <email>jplock@smoketurner.com</email>
-            <timezone>America/New_York</timezone>
-        </developer>
-        <developer>
             <id>oss92</id>
             <name>Mohamed Osama</name>
-            <email>mohamed.osama@fashiontrade.com</email>
+            <email>mohamed.o.alnagdy@gmail.com</email>
             <timezone>Europe/Amsterdam</timezone>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com:FashionTrade/dropwizard-swagger-v3.git</connection>
-        <developerConnection>scm:git:git@github.com:FashionTrade/dropwizard-swagger-v3.git</developerConnection>
-        <url>http://github.com/FashionTrade/dropwizard-swagger-v3</url>
+        <connection>scm:git:git://github.com:oss92/dropwizard-swagger-v3.git</connection>
+        <developerConnection>scm:git:git@github.com:oss92/dropwizard-swagger-v3.git</developerConnection>
+        <url>http://github.com/oss92/dropwizard-swagger-v3</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -437,8 +427,8 @@
                 <configuration>
                     <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
                     <properties>
-                        <owner>FashionTrade.com B.V</owner>
-                        <email>mohamed.osama@fashiontrade.com</email>
+                        <owner>Ossterdam</owner>
+                        <email>mohamed.o.alnagdy@gmail.com</email>
                     </properties>
                     <mapping>
                         <java>SLASHSTAR_STYLE</java>
