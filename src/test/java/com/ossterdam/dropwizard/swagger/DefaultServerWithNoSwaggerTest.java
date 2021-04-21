@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 Ossterdam (mohamed.o.alnagdy@gmail.com)
+ * Copyright © 2021 Ossterdam (mohamed.o.alnagdy@gmail.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ package com.ossterdam.dropwizard.swagger;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.idfconnect.tools.dropwizard.swagger.SwaggerBundleConfiguration;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import org.junit.ClassRule;

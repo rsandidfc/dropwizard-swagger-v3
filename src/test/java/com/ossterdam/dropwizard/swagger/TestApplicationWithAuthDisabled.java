@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 Ossterdam (mohamed.o.alnagdy@gmail.com)
+ * Copyright © 2021 Ossterdam (mohamed.o.alnagdy@gmail.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,9 @@
  */
 package com.ossterdam.dropwizard.swagger;
 
+import com.idfconnect.tools.dropwizard.swagger.SwaggerBundle;
+import com.idfconnect.tools.dropwizard.swagger.SwaggerBundleConfiguration;
+import com.idfconnect.tools.dropwizard.swagger.SwaggerViewConfiguration;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
