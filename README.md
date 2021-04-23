@@ -1,9 +1,13 @@
 dropwizard-swagger-v3
-==================
+=====================
 
 A Dropwizard bundle that serves Swagger UI static content and loads Swagger endpoints. Swagger UI static content is taken from https://github.com/swagger-api/swagger-ui
 
-Current version has been tested with Dropwizard 1.3.9 and Swagger 2.0.7 which supports OpenApi 3.0 specifications
+Current version has been tested with Dropwizard 1.3.9 and Swagger 2.0.7 which supports OpenApi 3.0 specifications.
+
+Current version includes Swagger UI 3.45.1.
+
+Current version is built with Swagger 2.1.7, Dropwizard 2.0.21, and Dropwizard-Swagger version 2.0.12-1.
 
 Requirements
 --------------
@@ -18,9 +22,9 @@ Usage
 
 ```xml
 <dependency>
-    <groupId>com.ossterdam</groupId>
+    <groupId>com.idfconnect.tools</groupId>
     <artifactId>dropwizard-swagger-v3</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
