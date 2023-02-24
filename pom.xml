@@ -61,6 +61,10 @@
 		<google-java-format.version>1.8</google-java-format.version>
 		<jmh.version>1.21</jmh.version>
 		<swagger.version>2.1.7</swagger.version>
+		
+		<!-- IDFC Maven -->
+		<idfc.repo.id>idfcmaven</idfc.repo.id>
+		<idfc.maven.url.base>https://idfconnect.jfrog.io/idfconnect</idfc.maven.url.base>
 	</properties>
 
 	<developers>
@@ -187,6 +191,7 @@
 	</dependencyManagement>
 
 	<distributionManagement>
+	<!--
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -194,6 +199,22 @@
 		<repository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	-->
+		<snapshotRepository>
+			<id>${idfc.repo.id}</id>
+			<name>IDFC Snapshot Repository</name>
+			<url>${idfc.maven.url.base}/libs-snapshot-local</url>
+		</snapshotRepository>
+		<site>
+			<id>mars.idfconnect.com</id>
+			<name>IDFC Site Repository (WebDav)</name>
+			<url>dav:https://mars.idfconnect.com/projects/${project.artifactId}</url>
+		</site>
+		<repository>
+			<id>${idfc.repo.id}</id>
+			<name>IDFC Release Repository</name>
+			<url>${idfc.maven.url.base}/libs-release-local</url>
 		</repository>
 	</distributionManagement>
 
@@ -289,6 +310,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- 
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -300,6 +322,7 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
